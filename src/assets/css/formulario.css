@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+#paginaLogin {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* --- LADO ESQUERDO --- */
+#sessaoBanner {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    background-image: url('https://imgs.search.brave.com/bTD78uSPnFt7IuzOXO_EnKxnXugsmjw9iv04ndJ18Yo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3RpL2ZvdG9z/LWdyYXRpcy90Mi8x/NDE2MTU1MC1waXp6/YS1wZXJ0by1kby1m/b2dhby1kZS1wZWRy/YS1jb20tZm9nby1m/dW5kby1kZS11bS1y/ZXN0YXVyYW50ZS1w/aXp6YXJpYS10cmFk/aWNpb25hbC1jb20t/bGFyZWlyYS1mb3Rv/LmpwZw');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+#textoBanners {
+    margin-top: auto;
+}
+
+#textoBanners h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+}
+
+#textoBanners hr {
+    width: 3rem;
+    border: 2px solid white;
+    margin-bottom: 0.8rem;
+}
+
+#textoBanners p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+#footerBanner {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* --- LADO DIREITO --- */
+#sessaoFormulario {
+    width: 45%;
+    background: #f5f0eb;
+    color: #2b1a1a;
+    display: flex;
+    flex-direction: column;      
+    justify-content: center;
+    padding: 3rem;
+    gap: 0.8rem;
+    overflow-y: auto;
+}
+
+#sessaoFormulario h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2b1a1a;
+    margin-bottom: 0.2rem;
+}
+
+#sessaoFormulario label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+#sessaoFormulario input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background: white;
+    color: #333;
+}
+
+#btnEntrar {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #7b1a1a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+#btnEntrar:hover {
+    background-color: #5e1414;
+}
+
+#btnConvidado {
+    width: 100%;
+    padding: 0.85rem;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+}
+
+#sessaoFormulario span {
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+#sessaoFormulario a {
+    color: #7b1a1a;
+    font-weight: bold;
+    text-decoration: none;
+}
