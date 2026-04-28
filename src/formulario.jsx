@@ -1,5 +1,5 @@
 import { use, useState } from 'react'
-
+import { DefaultInput } from './DefaultInput'
 import './assets/css/formulario.css'
 
 // criando o estado de login
@@ -28,7 +28,7 @@ function Login() {
   return (
     <div id="paginaLogin">
       <section id="sessaoBanner">
-        <span id='nomeBranch'>Nome Branch</span>
+        <span id='nomeBranch'>Pizzaria Plaza</span>
         <div id="textoBanners">
           <h1>Aqui vou colocar o texto do banner</h1>
           <hr />
@@ -40,7 +40,10 @@ function Login() {
       <section id="sessaoFormulario">
         <h2>Bem Vindo de Volta</h2>
         <p><b>Entre com seu Email e Senha para Continuar</b></p>
-        <label>EMAIL</label>
+        <label>EMAIL</label> 
+        
+        <DefaultInput/>
+
         <input type="email" placeholder='seu@email' value={email} onChange={(e) => setEmail(e.target.value)} />
         <label>Senha <a href="#">Esqueci Minha Senha</a></label>
         <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder='********'/>
