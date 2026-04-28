@@ -28,7 +28,7 @@ function Login() {
   return (
     <div id="paginaLogin">
       <section id="sessaoBanner">
-        <span id='nomeBranch'>Nome Branch</span>
+        <span id='nomeBranch'>Pizzaria Plaza</span>
         <div id="textoBanners">
           <h1>Aqui vou colocar o texto do banner</h1>
           <hr />
