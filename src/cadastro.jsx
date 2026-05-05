@@ -13,10 +13,26 @@ function Cadastro(){
         senha : '',
         confirmarSenha : ''
     })
+    const [erro, setErro] = useState('')
 
     
 function atualizarCampo(e){
     setFormData({...formData, [e.target.name]: e.target.value})
+}
+
+async function cadastrarUsuario () {
+    const resposta = await fetch('http://localhost:3000/cadastro',{
+        method:'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(formData)
+    })
+    const dados = await resposta.json()
+    console.log(dados)
+    setErro('')
+}
+
+if(formData.senha !== formData.confirmarSenha){
+    setErro('As senhas não coincidem')
 }
 
 return (
@@ -77,15 +93,20 @@ return (
         maxLength={11} required
         />
         
-        <button id="btnEntrar">Cadastrar</button>
+        <button id="btnEntrar" onClick={cadastrarUsuario}>Cadastrar</button>
         <p>Já tem conta ? <a href="">Entrar</a></p>
+        
         
 
 
     </section>
 
     
+    {erro && <p style={{color: 'red'}}>{erro}</p>}
+
     </div>
+
+
 )
 
 }
