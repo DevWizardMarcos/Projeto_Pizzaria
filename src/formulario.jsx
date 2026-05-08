@@ -42,7 +42,6 @@ function Login() {
         <p><b>Entre com seu Email e Senha para Continuar</b></p>
         <label>EMAIL</label> 
         
-        <DefaultInput/>
 
         <input type="email" placeholder='seu@email' value={email} onChange={(e) => setEmail(e.target.value)} />
         <label>Senha <a href="#">Esqueci Minha Senha</a></label>

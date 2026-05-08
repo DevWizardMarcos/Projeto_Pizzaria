@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding: 2rem;
-    background-image: url('https://imgs.search.brave.com/bTD78uSPnFt7IuzOXO_EnKxnXugsmjw9iv04ndJ18Yo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3RpL2ZvdG9z/LWdyYXRpcy90Mi8x/NDE2MTU1MC1waXp6/YS1wZXJ0by1kby1m/b2dhby1kZS1wZWRy/YS1jb20tZm9nby1m/dW5kby1kZS11bS1y/ZXN0YXVyYW50ZS1w/aXp6YXJpYS10cmFk/aWNpb25hbC1jb20t/bGFyZWlyYS1mb3Rv/LmpwZw');
+    background-image: url('../img/pizzaria.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
