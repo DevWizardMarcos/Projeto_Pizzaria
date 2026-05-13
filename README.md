@@ -1,5 +1,6 @@
 # Projeto Pizzaria
-
+<p align="center"> <img src="readPizzaria/banner.png" alt="Savory Banner" width="100%" /> </p> </p>
+📖 Sobre o projeto
 Sistema SaaS para pizzaria em desenvolvimento, com foco em criar um MVP vendável em 4 a 5 semanas. O projeto está sendo construído em equipe, com backend em FastAPI e frontend em React + Vite.
 
 ## Visão geral da estratégia
