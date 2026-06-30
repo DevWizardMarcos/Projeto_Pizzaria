@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "description": "Front-end da Pizzaria, construido com React e Vite",
+  "homepage": "https://DevWizardMarcos.github.io/Projeto_Pizzaria",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,7 +13,6 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
-    "gh-pages": "^6.3.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.18.1"
@@ -24,6 +25,7 @@
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "vite": "^8.0.4"
   }

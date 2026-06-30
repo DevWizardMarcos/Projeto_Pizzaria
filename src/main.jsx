@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import Login from "./formulario.jsx";
-import Cadastro from "./cadastro.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Cadastro from "./pages/Cadastro/Cadastro.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

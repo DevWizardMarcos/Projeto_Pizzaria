@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './assets/css/formulario.css'
+import '../../styles/auth.css'
 
 const camposIniciais = {
   nome: '',
