@@ -1,55 +1,95 @@
-import { use, useState } from 'react'
-import { DefaultInput } from './DefaultInput'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './assets/css/formulario.css'
 
-// criando o estado de login
-
-
-
-
-
 function Login() {
-        
   const [email, setEmail] = useState('')
-  const [senha,setSenha]  = useState('')
-  
-  async function handleLogin() {
-    const resposta = await fetch('http://localhost:3000/login',{
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body:JSON.stringify({email,senha})
-      
-    })
-    const dados = await  resposta.json()
-    console.log(dados)    
-  } 
-  
-  {/* essao do banner */}
+  const [senha, setSenha] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [erro, setErro] = useState('')
+
+  async function handleLogin(e) {
+    e.preventDefault()
+    setErro('')
+    setLoading(true)
+
+    try {
+      const resposta = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha }),
+      })
+
+      if (!resposta.ok) {
+        setErro('Email ou senha inválidos.')
+        return
+      }
+
+      // TODO: const dados = await resposta.json() → salvar token e redirecionar
+    } catch {
+      setErro('Erro de conexão. Tente novamente.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <div id="paginaLogin">
-      <section id="sessaoBanner">
-        <span id='nomeBranch'>Pizzaria Plaza</span>
-        <div id="textoBanners">
-          <h1>Aqui vou colocar o texto do banner</h1>
+    <div className="pagina-login">
+      <section className="sessao-banner">
+        <span className="nome-branch">Pizzaria Plaza</span>
+        <div className="texto-banner">
+          <h1>Sabor que aquece a alma, direto ao seu coração.</h1>
           <hr />
-          <p>frase da pizzaria em geral</p>
-          <span id="footerBanner">footer o banner</span>
+          <p>Cada fatia é uma história de ingredientes selecionados com amor.</p>
+          <span className="footer-banner">© Pizzaria Plaza · Desde 2010</span>
         </div>
       </section>
 
-      <section id="sessaoFormulario">
-        <h2>Bem Vindo de Volta</h2>
-        <p><b>Entre com seu Email e Senha para Continuar</b></p>
-        <label>EMAIL</label> 
-        
+      <section className="sessao-formulario">
+        <h2>Bem-vindo de volta</h2>
+        <p className="subtitulo">Entre com seu e-mail e senha para continuar</p>
 
-        <input type="email" placeholder='seu@email' value={email} onChange={(e) => setEmail(e.target.value)} />
-        <label>Senha <a href="#">Esqueci Minha Senha</a></label>
-        <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} placeholder='********'/>
-        <button onClick={handleLogin} id='btnEntrar'>Entrar</button>
-        <span>ou</span>
-        <button id='btnConvidado'>Continuar como Convidado</button>
-        <p>Não possui conta ? <a href="">Criar Conta</a></p>
+        <form onSubmit={handleLogin} noValidate>
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="seu@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            autoComplete="email"
+          />
+
+          <label htmlFor="senha">
+            Senha <Link to="/recuperar-senha">Esqueci minha senha</Link>
+          </label>
+          <input
+            id="senha"
+            type="password"
+            placeholder="••••••••"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+            autoComplete="current-password"
+          />
+
+          {erro && <span className="mensagem-erro">{erro}</span>}
+
+          <button type="submit" className="btn-entrar" disabled={loading}>
+            {loading ? 'Entrando...' : 'Entrar'}
+          </button>
+        </form>
+
+        <span className="divisor">ou</span>
+
+        <button type="button" className="btn-convidado">
+          Continuar como Convidado
+        </button>
+
+        <p className="link-cadastro">
+          Não possui conta? <Link to="/cadastro">Criar conta</Link>
+        </p>
       </section>
     </div>
   )

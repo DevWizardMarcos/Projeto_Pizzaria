@@ -1,137 +1,214 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: black;
-    color: white;
+  background-color: #0d0d0d;
+  color: white;
 }
 
-#paginaLogin {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
+.pagina-login {
+  display: flex;
+  height: 100vh;
 }
 
-/* --- LADO ESQUERDO --- */
-#sessaoBanner {
-    width: 55%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-    background-image: url('../img/pizzaria.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
+/* --- BANNER (LADO ESQUERDO) --- */
+.sessao-banner {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background-image:
+    linear-gradient(
+      160deg,
+      rgba(80, 10, 10, 0.85) 0%,
+      rgba(10, 5, 5, 0.95) 100%
+    ),
+    url("../img/cadastro.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 
-#textoBanners {
-    margin-top: auto;
+.sessao-banner--cadastro {
+  background-image:
+    linear-gradient(
+      160deg,
+      rgba(120, 60, 0, 0.88) 0%,
+      rgba(20, 10, 0, 0.96) 100%
+    ),
+    url("../img/Login.png");
 }
 
-#textoBanners h1 {
-    font-size: 2.2rem;
-    font-weight: bold;
-    margin-bottom: 0.8rem;
+.nome-branch {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
-#textoBanners hr {
-    width: 3rem;
-    border: 2px solid white;
-    margin-bottom: 0.8rem;
+.texto-banner {
+  margin-top: auto;
 }
 
-#textoBanners p {
-    font-size: 0.95rem;
-    opacity: 0.85;
+.texto-banner h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
 }
 
-#footerBanner {
-    font-size: 0.75rem;
-    opacity: 0.6;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.texto-banner hr {
+  width: 3rem;
+  border: 2px solid #e05c5c;
+  margin-bottom: 1rem;
 }
 
-/* --- LADO DIREITO --- */
-#sessaoFormulario {
-    width: 45%;
-    background: #f5f0eb;
-    color: #2b1a1a;
-    display: flex;
-    flex-direction: column;      
-    justify-content: center;
-    padding: 3rem;
-    gap: 0.8rem;
-    overflow-y: auto;
+.texto-banner p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  line-height: 1.6;
 }
 
-#sessaoFormulario h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #2b1a1a;
-    margin-bottom: 0.2rem;
+.footer-banner {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-#sessaoFormulario label {
-    font-size: 0.75rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #555;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
+/* --- FORMULÁRIO (LADO DIREITO) --- */
+.sessao-formulario {
+  width: 45%;
+  background: #f5f0eb;
+  color: #2b1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  gap: 0.75rem;
+  overflow-y: auto;
 }
 
-#sessaoFormulario input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    background: white;
-    color: #333;
+.sessao-formulario h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2b1a1a;
 }
 
-#btnEntrar {
-    width: 100%;
-    padding: 0.85rem;
-    background-color: #7b1a1a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 0.5rem;
+.subtitulo {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
 
-#btnEntrar:hover {
-    background-color: #5e1414;
+.sessao-formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-#btnConvidado {
-    width: 100%;
-    padding: 0.85rem;
-    background: transparent;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    color: #333;
-    cursor: pointer;
+.sessao-formulario label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #555;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
 }
 
-#sessaoFormulario span {
-    text-align: center;
-    color: #999;
-    font-size: 0.85rem;
+.sessao-formulario input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: white;
+  color: #333;
+  transition: border-color 0.2s;
 }
 
-#sessaoFormulario a {
-    color: #7b1a1a;
-    font-weight: bold;
-    text-decoration: none;
+.sessao-formulario input:focus {
+  outline: none;
+  border-color: #7b1a1a;
+}
+
+.mensagem-erro {
+  font-size: 0.82rem;
+  color: #c0392b;
+  background: #fdecea;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-entrar {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: #7b1a1a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-entrar:hover:not(:disabled) {
+  background-color: #5e1414;
+}
+
+.btn-entrar:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.divisor {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.btn-convidado {
+  width: 100%;
+  padding: 0.85rem;
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #444;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.btn-convidado:hover {
+  border-color: #7b1a1a;
+  color: #7b1a1a;
+}
+
+.link-cadastro {
+  font-size: 0.88rem;
+  text-align: center;
+  color: #666;
+}
+
+.sessao-formulario a {
+  color: #7b1a1a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sessao-formulario a:hover {
+  text-decoration: underline;
 }

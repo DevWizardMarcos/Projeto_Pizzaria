@@ -1,114 +1,173 @@
-import { useState } from "react";
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './assets/css/formulario.css'
 
-// criando função para cadastro de clientes
-function Cadastro(){
-        //pegando      atualizando  //definindo os valores iniciais
-    const [formData, setFormData] = useState({
-        nome : '',
-        email : '',
-        telefone : '',
-        endereco : '',
-        username : '',
-        senha : '',
-        confirmarSenha : ''
-    })
-    const [erro, setErro] = useState('')
-
-    
-function atualizarCampo(e){
-    setFormData({...formData, [e.target.name]: e.target.value})
+const camposIniciais = {
+  nome: '',
+  email: '',
+  telefone: '',
+  endereco: '',
+  username: '',
+  senha: '',
+  confirmarSenha: '',
 }
 
-async function cadastrarUsuario () {
-    const resposta = await fetch('http://localhost:3000/cadastro',{
-        method:'POST',
-        headers: {'Content-Type': 'application/json'},
-        body:JSON.stringify(formData)
-    })
-    const dados = await resposta.json()
-    console.log(dados)
+function Cadastro() {
+  const [formData, setFormData] = useState(camposIniciais)
+  const [erro, setErro] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  function atualizarCampo(e) {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  async function handleCadastro(e) {
+    e.preventDefault()
     setErro('')
-}
 
-if(formData.senha !== formData.confirmarSenha){
-    setErro('As senhas não coincidem')
-}
+    if (formData.senha !== formData.confirmarSenha) {
+      setErro('As senhas não coincidem.')
+      return
+    }
 
-return (
-    <div id="paginaLogin">
-      <section id="sessaoBanner">
-        <span id="nomeBranch">Pizzaria Plaza</span>
-        <div id="textoBanner">
-            <h1>Crie sua conta e peça pizza favorita</h1>
-            <hr />
-            <p>Rápido, facil e delicioso</p>
-            <span id="footerBanner">footer do banner</span>
+    setLoading(true)
+    try {
+      const resposta = await fetch('http://localhost:3000/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (!resposta.ok) {
+        setErro('Erro ao criar conta. Tente novamente.')
+        return
+      }
+
+      // TODO: redirecionar para login após cadastro bem-sucedido
+    } catch {
+      setErro('Erro de conexão. Tente novamente.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className="pagina-login">
+      <section className="sessao-banner sessao-banner--cadastro">
+        <span className="nome-branch">Pizzaria Plaza</span>
+        <div className="texto-banner">
+          <h1>Crie sua conta e peça sua pizza favorita</h1>
+          <hr />
+          <p>Rápido, fácil e delicioso.</p>
+          <span className="footer-banner">© Pizzaria Plaza · Desde 2010</span>
         </div>
-        </section>
-    <section id="sessaoFormulario">
+      </section>
+
+      <section className="sessao-formulario">
         <h2>Criar Conta</h2>
-        <p><b>Preencha seus dados para continuar</b></p>
-        <label>NOME</label>
-        <input type="text" name="nome" placeholder="Seu nome completo" 
-        
-        value={formData.nome} onChange={atualizarCampo}
-        required    />
+        <p className="subtitulo">Preencha seus dados para continuar</p>
 
-        <label>EMAIL</label>
-        <input type="email" name="email" id="" placeholder="Seu email"
-        value={formData.email} onChange={atualizarCampo}
+        <form onSubmit={handleCadastro} noValidate>
+          <label htmlFor="nome">Nome</label>
+          <input
+            id="nome"
+            type="text"
+            name="nome"
+            placeholder="Seu nome completo"
+            value={formData.nome}
+            onChange={atualizarCampo}
+            required
+            autoComplete="name"
+          />
 
-        required/>
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="seu@email.com"
+            value={formData.email}
+            onChange={atualizarCampo}
+            required
+            autoComplete="email"
+          />
 
-        <label htmlFor="">TELEFONE</label>
-        <input type="tel" name="telefone" id="" placeholder="Seu telefone" 
-        
-        value={formData.telefone} onChange={atualizarCampo}
-        maxLength={11} required
-        />
-        
-        <label htmlFor="">ENDEREÇO</label>
-        <input type="text" name="endereco" placeholder="Seu endereço"
-        
-        value={formData.endereco} onChange={atualizarCampo}
-        required
-        />
+          <label htmlFor="telefone">Telefone</label>
+          <input
+            id="telefone"
+            type="tel"
+            name="telefone"
+            placeholder="(11) 99999-9999"
+            value={formData.telefone}
+            onChange={atualizarCampo}
+            maxLength={11}
+            required
+            autoComplete="tel"
+          />
 
-        <label>USER NAME</label>
-        <input type="text" name="username" placeholder="Seu username"
-        value={formData.username} onChange={atualizarCampo}
-        required 
-        />
+          <label htmlFor="endereco">Endereço</label>
+          <input
+            id="endereco"
+            type="text"
+            name="endereco"
+            placeholder="Rua, número, bairro"
+            value={formData.endereco}
+            onChange={atualizarCampo}
+            required
+            autoComplete="street-address"
+          />
 
-        <label>SENHA</label>
-        <input type="password" name="senha" id="" placeholder="**********"
-        value={formData.senha} onChange={atualizarCampo}
-        maxLength={11} required
-        />
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Seu username"
+            value={formData.username}
+            onChange={atualizarCampo}
+            required
+            autoComplete="username"
+          />
 
-        <label>CONFIRMAR SENHA</label>
-        <input type="password" name="confirmarSenha" id="" placeholder="**********"
-        value={formData.confirmarSenha} onChange={atualizarCampo}
-        maxLength={11} required
-        />
-        
-        <button id="btnEntrar" onClick={cadastrarUsuario}>Cadastrar</button>
-        <p>Já tem conta ? <a href="">Entrar</a></p>
-        
-        
+          <label htmlFor="senha">Senha</label>
+          <input
+            id="senha"
+            type="password"
+            name="senha"
+            placeholder="••••••••"
+            value={formData.senha}
+            onChange={atualizarCampo}
+            maxLength={11}
+            required
+            autoComplete="new-password"
+          />
 
+          <label htmlFor="confirmarSenha">Confirmar Senha</label>
+          <input
+            id="confirmarSenha"
+            type="password"
+            name="confirmarSenha"
+            placeholder="••••••••"
+            value={formData.confirmarSenha}
+            onChange={atualizarCampo}
+            maxLength={11}
+            required
+            autoComplete="new-password"
+          />
 
-    </section>
+          {erro && <span className="mensagem-erro">{erro}</span>}
 
-    
-    {erro && <p style={{color: 'red'}}>{erro}</p>}
+          <button type="submit" className="btn-entrar" disabled={loading}>
+            {loading ? 'Cadastrando...' : 'Cadastrar'}
+          </button>
+        </form>
 
+        <p className="link-cadastro">
+          Já tem conta? <Link to="/">Entrar</Link>
+        </p>
+      </section>
     </div>
-
-
-)
-
+  )
 }
 
 export default Cadastro
